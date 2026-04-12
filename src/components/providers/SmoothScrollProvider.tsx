@@ -13,7 +13,7 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
   useEffect(() => {
     const lenisInstance = new Lenis({
       duration: 1.2,
-      smooth: true,
+      easing: (t) => Math.min(1, 1.001 - Math.pow(1 - t, 3)),
     });
 
     setLenis(lenisInstance);
