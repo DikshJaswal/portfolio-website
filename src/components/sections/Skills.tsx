@@ -8,6 +8,9 @@ export const Skills: React.FC = () => {
     {
       title: "Frontend",
       icon: Code,
+      color: "from-blue-500 to-cyan-400",
+      bgColor: "from-blue-500/10 to-cyan-400/10",
+      borderColor: "from-blue-500/50 to-cyan-400/50",
       skills: [
         { name: "React", level: 85 },
         { name: "Next.js", level: 80 },
@@ -21,6 +24,9 @@ export const Skills: React.FC = () => {
     {
       title: "Backend",
       icon: Cpu,
+      color: "from-purple-500 to-pink-400",
+      bgColor: "from-purple-500/10 to-pink-400/10",
+      borderColor: "from-purple-500/50 to-pink-400/50",
       skills: [
         { name: "Node.js", level: 75 },
         { name: "Python", level: 80 },
@@ -32,6 +38,9 @@ export const Skills: React.FC = () => {
     {
       title: "Database",
       icon: Database,
+      color: "from-green-500 to-emerald-400",
+      bgColor: "from-green-500/10 to-emerald-400/10",
+      borderColor: "from-green-500/50 to-emerald-400/50",
       skills: [
         { name: "MySQL", level: 75 },
         { name: "PostgreSQL", level: 70 },
@@ -43,6 +52,9 @@ export const Skills: React.FC = () => {
     {
       title: "Tools",
       icon: Cloud,
+      color: "from-orange-500 to-amber-400",
+      bgColor: "from-orange-500/10 to-amber-400/10",
+      borderColor: "from-orange-500/50 to-amber-400/50",
       skills: [
         { name: "Git", level: 85 },
         { name: "GitHub", level: 85 },
@@ -52,17 +64,19 @@ export const Skills: React.FC = () => {
     }
   ];
 
-  const SkillBar: React.FC<{ skill: any }> = ({ skill }) => (
+  const SkillBar: React.FC<{ skill: any; color: string }> = ({ skill, color }) => (
     <div className="mb-3">
       <div className="flex justify-between items-center mb-2">
         <span className="text-[var(--foreground)] font-medium text-sm">{skill.name}</span>
-        <span className="text-[var(--primary)] text-sm font-semibold">{skill.level}%</span>
+        <span className={`text-sm font-semibold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>{skill.level}%</span>
       </div>
-      <div className="w-full bg-[var(--card-bg)] rounded-full h-2">
+      <div className="w-full bg-[var(--card-bg)] rounded-full h-2 overflow-hidden">
         <div
-          className="h-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] rounded-full"
+          className={`h-full bg-gradient-to-r ${color} rounded-full relative overflow-hidden`}
           style={{ width: `${skill.level}%` }}
-        />
+        >
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
+        </div>
       </div>
     </div>
   );
@@ -86,17 +100,17 @@ export const Skills: React.FC = () => {
           {skillCategories.map((category) => (
             <div
               key={category.title}
-              className="card p-4 md:p-6"
+              className={`card p-4 md:p-6 bg-gradient-to-br ${category.bgColor} border border-gradient-to-r ${category.borderColor} hover:shadow-2xl hover:shadow-${category.color}/20 transition-all duration-300 hover:-translate-y-1`}
             >
               <div className="flex items-center gap-3 mb-4 md:mb-6">
-                <div className="w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] rounded-xl flex items-center justify-center flex-shrink-0">
+                <div className={`w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br ${category.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                   <category.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
                 </div>
                 <h3 className="text-lg md:text-xl font-bold">{category.title}</h3>
               </div>
               <div className="space-y-3">
                 {category.skills.map((skill) => (
-                  <SkillBar key={skill.name} skill={skill} />
+                  <SkillBar key={skill.name} skill={skill} color={category.color} />
                 ))}
               </div>
             </div>
