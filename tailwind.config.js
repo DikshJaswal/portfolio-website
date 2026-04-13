@@ -11,38 +11,29 @@ module.exports = {
       colors: {
         background: 'var(--background)',
         foreground: 'var(--foreground)',
-        muted: 'var(--muted)',
-        'muted-foreground': 'var(--muted-foreground)',
+        primary: 'var(--primary)',
+        secondary: 'var(--secondary)',
         accent: 'var(--accent)',
-        'accent-secondary': 'var(--accent-secondary)',
-        'accent-tertiary': 'var(--accent-tertiary)',
-        'accent-quaternary': 'var(--accent-quaternary)',
         border: 'var(--border)',
+        'card-bg': 'var(--card-bg)',
+        'card-hover': 'var(--card-hover)',
       },
       fontFamily: {
         sans: ['Inter', 'system-ui', 'sans-serif'],
       },
       animation: {
-        'typing': 'typing 3s steps(20, end), blink-caret 0.75s step-end infinite',
-        'float': 'float 6s ease-in-out infinite',
-        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'fade-in-up': 'fadeInUp 0.6s ease forwards',
+        'fade-in': 'fadeIn 0.5s ease forwards',
       },
       keyframes: {
-        typing: {
-          'from': { width: '0' },
-          'to': { width: '100%' }
+        fadeInUp: {
+          'from': { opacity: '0', transform: 'translateY(30px)' },
+          'to': { opacity: '1', transform: 'translateY(0)' }
         },
-        'blink-caret': {
-          'from, to': { 'border-color': 'transparent' },
-          '50%': { 'border-color': '#8b5cf6' }
+        fadeIn: {
+          'from': { opacity: '0' },
+          'to': { opacity: '1' }
         },
-        float: {
-          '0%, 100%': { transform: 'translateY(0px)' },
-          '50%': { transform: 'translateY(-20px)' }
-        }
-      },
-      backdropBlur: {
-        xs: '2px',
       },
     },
   },

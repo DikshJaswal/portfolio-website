@@ -1,9 +1,7 @@
 'use client';
 
-import React, { useState } from 'react';
-import { motion, useInView } from 'framer-motion';
-import { Github, Linkedin, Mail, MapPin, Phone, Send } from 'lucide-react';
-import { Button } from '../ui/Button';
+import React, { useState, useEffect } from 'react';
+import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import toast from 'react-hot-toast';
 
 export const Contact: React.FC = () => {
@@ -14,8 +12,23 @@ export const Contact: React.FC = () => {
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const ref = React.useRef(null);
-  const isInView = useInView(ref, { once: false, margin: "-100px" });
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    const section = document.getElementById('contact');
+    if (section) observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -27,13 +40,12 @@ export const Contact: React.FC = () => {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setIsSubmitting(true);
-    
+
     try {
-      // EmailJS configuration using environment variables
       const emailData = {
-  service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
-  template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
-  user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
+        service_id: process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        template_id: process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
+        user_id: process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY,
         template_params: {
           from_name: formData.name,
           from_email: formData.email,
@@ -43,7 +55,6 @@ export const Contact: React.FC = () => {
         }
       };
 
-      // Send email using EmailJS
       const response = await fetch('https://api.emailjs.com/api/v1.0/email/send', {
         method: 'POST',
         headers: {
@@ -53,39 +64,21 @@ export const Contact: React.FC = () => {
       });
 
       if (response.ok) {
-        // Success - show success message
         setIsSubmitted(true);
         setFormData({ name: '', email: '', message: '' });
         setTimeout(() => setIsSubmitted(false), 5000);
-        
-        // Show success toast
-        toast.success('Message sent successfully! I\'ll get back to you soon.', {
-          icon: 'success',
-          duration: 5000,
-        });
-        
-        // Also show browser notification if allowed
-        if (Notification.permission === 'granted') {
-          new Notification('Message Sent!', {
-            body: `Email from ${formData.name} has been sent successfully`,
-            icon: '/favicon.ico'
-          });
-        }
+        toast.success('Message sent successfully!');
       } else {
         const errorData = await response.text();
         throw new Error(`EmailJS error: ${errorData}`);
       }
-      
+
     } catch (error) {
       const errorMessage = error instanceof Error ? error.message : 'Unknown error';
       if (errorMessage.includes('EmailJS')) {
-        toast.error('Email service not configured. Please contact directly at dikshitjaswal1922@gmail.com', {
-          duration: 6000,
-        });
+        toast.error('Email service not configured. Please contact directly at dikshitjaswal1922@gmail.com');
       } else {
-        toast.error('Failed to send message. Please try again later or email directly at dikshitjaswal1922@gmail.com', {
-          duration: 5000,
-        });
+        toast.error('Failed to send message. Please try again later.');
       }
     } finally {
       setIsSubmitting(false);
@@ -93,60 +86,46 @@ export const Contact: React.FC = () => {
   };
 
   const contactInfo = [
-    { icon: Mail, label: 'Email', value: 'dikshitjaswal1922@gmail.com' },
-    { icon: Phone, label: 'Phone', value: '+91 9317084250' },
-    { icon: MapPin, label: 'Location', value: 'Hamirpur, Himachal Pradesh, India' }
+    { icon: Mail, label: 'Email', value: 'dikshitjaswal1922@gmail.com', color: 'from-blue-500 to-cyan-400' },
+    { icon: Phone, label: 'Phone', value: '+91 9317084250', color: 'from-green-500 to-emerald-400' },
+    { icon: MapPin, label: 'Location', value: 'Hamirpur, Himachal Pradesh, India', color: 'from-purple-500 to-pink-400' }
   ];
 
   return (
     <section id="contact" className="py-20 relative">
       <div className="container mx-auto px-6">
-        <motion.div
-          ref={ref}
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.8 }}
-          className="text-center mb-16"
-        >
+        <div className="text-center mb-16">
+          <div className="inline-block mb-4">
+            <span className="badge">Get In Touch</span>
+          </div>
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text-animated">Contact Me</span>
+            <span className="gradient-text">Contact Me</span>
           </h2>
-          <p className="text-gray-400 text-lg max-w-2xl mx-auto">
+          <p className="text-[var(--foreground)] opacity-70 text-lg max-w-2xl mx-auto">
             Have questions about my projects or want to discuss opportunities?
             Feel free to reach out - I'm always happy to connect!
           </p>
-        </motion.div>
+        </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
           {/* Contact Form */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="glass-enhanced rounded-2xl p-8"
+          <div
+            className={`card p-8 hover:shadow-2xl hover:shadow-[var(--primary)]/20 transition-all duration-500 ${
+              isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+            }`}
           >
             {isSubmitted ? (
-              <motion.div
-                initial={{ opacity: 0, scale: 0.9 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="text-center py-12"
-              >
-                <motion.div
-                  animate={{ 
-                    scale: [1, 1.2, 1],
-                    rotate: [0, 360, 0]
-                  }}
-                  transition={{ duration: 2, repeat: Infinity }}
-                >
-                  <Send className="w-16 h-16 text-green-400 mx-auto mb-4" />
-                </motion.div>
-                <h3 className="text-2xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-300">Thank you for reaching out. I'll get back to you soon.</p>
-              </motion.div>
+              <div className="text-center py-12 animate-fade-in">
+                <div className="w-20 h-20 bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] rounded-full flex items-center justify-center mx-auto mb-4 shadow-lg">
+                  <Send className="w-10 h-10 text-white" />
+                </div>
+                <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
+                <p className="text-[var(--foreground)] opacity-70">Thank you for reaching out. I'll get back to you soon.</p>
+              </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <label htmlFor="name" className="block text-gray-300 mb-2">
+                <div className="group">
+                  <label htmlFor="name" className="block text-[var(--foreground)] mb-2 font-semibold group-hover:text-[var(--primary)] transition-colors duration-300">
                     Name
                   </label>
                   <input
@@ -156,13 +135,13 @@ export const Contact: React.FC = () => {
                     value={formData.name}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                    className="w-full bg-[var(--card-bg)] border border-[var(--border)] px-4 py-3 rounded-xl focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20 outline-none transition-all duration-300 hover:border-[var(--primary)]/50"
                     placeholder="Your Name"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="email" className="block text-gray-300 mb-2">
+                <div className="group">
+                  <label htmlFor="email" className="block text-[var(--foreground)] mb-2 font-semibold group-hover:text-[var(--primary)] transition-colors duration-300">
                     Email
                   </label>
                   <input
@@ -172,13 +151,13 @@ export const Contact: React.FC = () => {
                     value={formData.email}
                     onChange={handleChange}
                     required
-                    className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200"
+                    className="w-full bg-[var(--card-bg)] border border-[var(--border)] px-4 py-3 rounded-xl focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20 outline-none transition-all duration-300 hover:border-[var(--primary)]/50"
                     placeholder="your.email@example.com"
                   />
                 </div>
 
-                <div>
-                  <label htmlFor="message" className="block text-gray-300 mb-2">
+                <div className="group">
+                  <label htmlFor="message" className="block text-[var(--foreground)] mb-2 font-semibold group-hover:text-[var(--primary)] transition-colors duration-300">
                     Message
                   </label>
                   <textarea
@@ -188,66 +167,63 @@ export const Contact: React.FC = () => {
                     onChange={handleChange}
                     required
                     rows={5}
-                    className="w-full px-4 py-3 bg-white/10 border border-gray-600 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:border-purple-500 focus:ring-2 focus:ring-purple-500/20 transition-all duration-200 resize-none"
+                    className="w-full bg-[var(--card-bg)] border border-[var(--border)] px-4 py-3 rounded-xl focus:border-[var(--primary)] focus:ring-2 focus:ring-[var(--primary)]/20 outline-none transition-all duration-300 hover:border-[var(--primary)]/50 resize-none"
                     placeholder="Tell me about your project..."
                   />
                 </div>
 
-                <Button
+                <button
                   type="submit"
-                  variant="primary"
-                  size="lg"
                   disabled={isSubmitting}
-                  className="w-full"
+                  className="w-full bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white px-6 py-3 rounded-xl font-semibold hover:shadow-lg hover:shadow-[var(--primary)]/30 hover:-translate-y-0.5 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:translate-y-0"
                 >
-                  {isSubmitting ? 'Sending...' : 'Send Message'}
-                </Button>
+                  {isSubmitting ? (
+                    <span className="flex items-center justify-center gap-2">
+                      <svg className="animate-spin h-5 w-5" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+                        <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                      </svg>
+                      Sending...
+                    </span>
+                  ) : (
+                    <span className="flex items-center justify-center gap-2">
+                      <Send className="w-5 h-5" />
+                      Send Message
+                    </span>
+                  )}
+                </button>
               </form>
             )}
-          </motion.div>
+          </div>
 
           {/* Contact Info */}
-          <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : {}}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="space-y-6"
+          <div
+            className={`space-y-5 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
+            style={{ transitionDelay: '200ms' }}
           >
-            <h3 className="text-2xl font-bold text-white mb-4">Contact Information</h3>
+            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
             {contactInfo.map((info, index) => (
-              <motion.div
+              <div
                 key={info.label}
-                initial={{ opacity: 0, y: 20 }}
-                animate={isInView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.5 + index * 0.1 }}
-                className="flex items-center space-x-4 glass-enhanced rounded-lg p-4 hover:scale-105 transition-all duration-300"
-                whileHover={{ 
-                  scale: 1.02,
-                  boxShadow: "0 15px 30px rgba(139, 92, 246, 0.3)",
-                  x: 5
-                }}
+                className={`flex items-center gap-4 bg-[var(--card-bg)] p-5 rounded-xl border border-[var(--border)] hover:border-[var(--primary)]/50 hover:shadow-lg hover:shadow-[var(--primary)]/10 hover:-translate-x-1 transition-all duration-300 cursor-pointer group ${
+                  isVisible ? 'opacity-100 translate-x-0' : 'opacity-0 -translate-x-10'
+                }`}
+                style={{ transitionDelay: `${200 + index * 100}ms` }}
               >
-                <motion.div 
-                  className="w-12 h-12 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full flex items-center justify-center"
-                  whileHover={{ 
-                    scale: 1.1,
-                    rotate: 360
-                  }}
-                  transition={{ duration: 0.6 }}
-                >
+                <div className={`w-14 h-14 bg-gradient-to-br ${info.color} rounded-xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300`}>
                   <info.icon className="w-6 h-6 text-white" />
-                </motion.div>
-                <div>
-                  <div className="text-gray-400 text-sm">
+                </div>
+                <div className="flex-1">
+                  <div className="text-[var(--foreground)] opacity-60 text-sm font-medium mb-1">
                     {info.label}
                   </div>
-                  <div className="text-white font-medium">
+                  <div className="text-[var(--foreground)] font-semibold group-hover:text-[var(--primary)] transition-colors duration-300">
                     {info.value}
                   </div>
                 </div>
-              </motion.div>
+              </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

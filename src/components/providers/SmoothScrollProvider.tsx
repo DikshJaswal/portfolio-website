@@ -17,16 +17,12 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
 
     setLenis(lenisInstance);
 
-    const raf = (time: number) => {
+    function raf(time: number) {
       lenisInstance.raf(time);
-    };
-
-    function updateScroll(time: number) {
-      lenisInstance?.raf(time);
-      requestAnimationFrame(updateScroll);
+      requestAnimationFrame(raf);
     }
 
-    requestAnimationFrame(updateScroll);
+    requestAnimationFrame(raf);
 
     return () => {
       lenisInstance.destroy();
