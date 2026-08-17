@@ -1,36 +1,101 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Dikshit Jaswal — Portfolio
 
-## Getting Started
+Personal portfolio website for Dikshit Jaswal, a B.Tech Computer Science student and full-stack web developer.
 
-First, run the development server:
+The site showcases selected projects, technical skills, education, contact information, and a downloadable resume.
+
+## Highlights
+
+- Responsive design for desktop, tablet, and mobile screens
+- Modern dark-glass UI with gradients, grid textures, and smooth interactions
+- Scroll-aware navigation with mobile menu support
+- Project cards with live demos and GitHub repositories
+- Skills grouped by frontend, backend, data, and workflow
+- EmailJS-powered contact form
+- Downloadable resume PDF
+- Smooth scrolling and reduced-motion support
+
+## Tech Stack
+
+- Next.js 16 and React 19
+- TypeScript
+- Tailwind CSS
+- Framer Motion
+- Lenis smooth scrolling
+- Lucide React icons
+- EmailJS REST API
+
+## Featured Projects
+
+| Project | Description | Links |
+| --- | --- | --- |
+| API Sentinel | API monitoring and security dashboard | [Live Demo](https://api-sentinel-psi.vercel.app) |
+| FinPilot | Full-stack personal finance tracker | [Live Demo](https://fin-pilot-zeta-dun.vercel.app/) · [GitHub](https://github.com/DikshJaswal/FinPilot) |
+| Resolve | Role-based customer support workspace | [Live Demo](https://resolve-pink-eight.vercel.app/) · [GitHub](https://github.com/DikshJaswal/RESOLVE) |
+| CodeFlow Debugger | JavaScript debugging and code analysis tool | [Live Demo](https://codeflow-javascript-debugger.vercel.app) |
+
+## Run Locally
+
+Requirements: Node.js 18 or newer and npm.
 
 ```bash
+git clone https://github.com/DikshJaswal/portfolio-website.git
+cd portfolio-website
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## EmailJS Configuration
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Create a `.env.local` file in the project root:
 
-## Learn More
+```env
+NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
+NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
+NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
+```
 
-To learn more about Next.js, take a look at the following resources:
+See [EMAILJS_SETUP.md](./EMAILJS_SETUP.md) for the complete EmailJS setup guide.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Available Scripts
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run dev      # Start the development server
+npm run build    # Create a production build
+npm run start    # Start the production server
+npm run lint     # Run ESLint
+npx tsc --noEmit # Check TypeScript without emitting files
+```
 
-## Deploy on Vercel
+## Project Structure
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```text
+src/
+├── app/
+│   ├── page.tsx              # Main portfolio page
+│   ├── globals.css            # Global styles and responsive design
+│   └── api/                   # Placeholder API route
+├── components/
+│   ├── sections/              # Hero, About, Projects, Skills, Contact
+│   ├── Navigation.tsx
+│   ├── Footer.tsx
+│   └── providers/             # Smooth scrolling provider
+public/
+├── resume.pdf
+├── FinPilot.png
+└── Resolve.png
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment
+
+The project is ready to deploy on [Vercel](https://vercel.com/):
+
+1. Import the repository into Vercel.
+2. Add the three EmailJS environment variables.
+3. Deploy the project.
+
+## License
+
+This portfolio is maintained by Dikshit Jaswal.
