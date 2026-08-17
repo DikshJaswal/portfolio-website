@@ -1,116 +1,72 @@
 'use client';
 
 import React from 'react';
-import { Code, Cpu, Database, Cloud } from 'lucide-react';
+import type { LucideIcon } from 'lucide-react';
+import {
+  Braces, Code2, Database, FileCode2, GitBranch, Github, Globe2, KeyRound,
+  LayoutDashboard, Layers, Network, Paintbrush, Route, Send, Server, Table2,
+  Terminal, Wind
+} from 'lucide-react';
+
+const skillIcons: Record<string, LucideIcon> = {
+  React: Code2,
+  'Next.js': Layers,
+  JavaScript: Braces,
+  TypeScript: Braces,
+  HTML5: FileCode2,
+  CSS3: Paintbrush,
+  'Tailwind CSS': Wind,
+  'Node.js': Server,
+  'Express.js': Route,
+  Python: Terminal,
+  Django: LayoutDashboard,
+  'REST APIs': Network,
+  'JWT Auth': KeyRound,
+  MongoDB: Database,
+  MySQL: Table2,
+  PostgreSQL: Database,
+  Supabase: Send,
+  'Prisma ORM': Database,
+  SQL: Table2,
+  Git: GitBranch,
+  GitHub: Github,
+  'VS Code': Code2,
+  Vercel: Globe2,
+  Postman: Send,
+  'C++': Terminal,
+};
 
 export const Skills: React.FC = () => {
   const skillCategories = [
-    {
-      title: "Frontend",
-      icon: Code,
-      color: "from-blue-500 to-cyan-400",
-      bgColor: "from-blue-500/10 to-cyan-400/10",
-      borderColor: "from-blue-500/50 to-cyan-400/50",
-      skills: [
-        { name: "React", level: 85 },
-        { name: "Next.js", level: 80 },
-        { name: "TypeScript", level: 75 },
-        { name: "JavaScript", level: 85 },
-        { name: "HTML", level: 90 },
-        { name: "CSS", level: 85 },
-        { name: "Tailwind CSS", level: 80 },
-      ]
-    },
-    {
-      title: "Backend",
-      icon: Cpu,
-      color: "from-purple-500 to-pink-400",
-      bgColor: "from-purple-500/10 to-pink-400/10",
-      borderColor: "from-purple-500/50 to-pink-400/50",
-      skills: [
-        { name: "Node.js", level: 75 },
-        { name: "Python", level: 80 },
-        { name: "Django", level: 70 },
-        { name: "Flask", level: 65 },
-        { name: "C++", level: 60 },
-      ]
-    },
-    {
-      title: "Database",
-      icon: Database,
-      color: "from-green-500 to-emerald-400",
-      bgColor: "from-green-500/10 to-emerald-400/10",
-      borderColor: "from-green-500/50 to-emerald-400/50",
-      skills: [
-        { name: "MySQL", level: 75 },
-        { name: "PostgreSQL", level: 70 },
-        { name: "MongoDB", level: 75 },
-        { name: "Supabase", level: 70 },
-        { name: "Prisma", level: 75 },
-      ]
-    },
-    {
-      title: "Tools",
-      icon: Cloud,
-      color: "from-orange-500 to-amber-400",
-      bgColor: "from-orange-500/10 to-amber-400/10",
-      borderColor: "from-orange-500/50 to-amber-400/50",
-      skills: [
-        { name: "Git", level: 85 },
-        { name: "GitHub", level: 85 },
-        { name: "VS Code", level: 90 },
-        { name: "Vercel", level: 80 },
-      ]
-    }
+    { title: 'Frontend', description: 'Interfaces that feel clear, fast, and responsive.', icon: Code2, color: 'from-blue-500 to-cyan-400', skills: ['React', 'Next.js', 'JavaScript', 'TypeScript', 'HTML5', 'CSS3', 'Tailwind CSS'] },
+    { title: 'Backend', description: 'Reliable APIs and server-side application logic.', icon: Server, color: 'from-violet-500 to-fuchsia-400', skills: ['Node.js', 'Express.js', 'Python', 'Django', 'REST APIs', 'JWT Auth'] },
+    { title: 'Data', description: 'Data models and persistence for real-world products.', icon: Database, color: 'from-emerald-500 to-teal-400', skills: ['MongoDB', 'MySQL', 'PostgreSQL', 'Supabase', 'Prisma ORM', 'SQL'] },
+    { title: 'Workflow', description: 'Tools I use to build, test, and ship consistently.', icon: GitBranch, color: 'from-orange-500 to-amber-400', skills: ['Git', 'GitHub', 'VS Code', 'Vercel', 'Postman', 'C++'] }
   ];
 
-  const SkillBar: React.FC<{ skill: any; color: string }> = ({ skill, color }) => (
-    <div className="mb-3">
-      <div className="flex justify-between items-center mb-2">
-        <span className="text-[var(--foreground)] font-medium text-sm">{skill.name}</span>
-        <span className={`text-sm font-semibold bg-gradient-to-r ${color} bg-clip-text text-transparent`}>{skill.level}%</span>
-      </div>
-      <div className="w-full bg-[var(--card-bg)] rounded-full h-2 overflow-hidden">
-        <div
-          className={`h-full bg-gradient-to-r ${color} rounded-full relative overflow-hidden`}
-          style={{ width: `${skill.level}%` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent animate-pulse" />
-        </div>
-      </div>
-    </div>
-  );
-
   return (
-    <section id="skills" className="py-16 md:py-20 relative">
-      <div className="container mx-auto px-4 md:px-6">
-        <div className="text-center mb-12 md:mb-16">
-          <div className="inline-block mb-4">
-            <span className="badge">Technical Expertise</span>
-          </div>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
-            <span className="gradient-text">Skills & Technologies</span>
-          </h2>
-          <p className="text-[var(--foreground)] opacity-70 text-base md:text-lg max-w-2xl mx-auto">
-            A comprehensive overview of my technical expertise and the tools I work with.
-          </p>
+    <section id="skills" className="section-shell py-20 md:py-28">
+      <div className="container mx-auto px-5 sm:px-8">
+        <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+          <span className="badge">Technical toolkit</span>
+          <h2 className="mt-5 text-4xl font-bold sm:text-5xl">The tools behind my <span className="gradient-text">work.</span></h2>
+          <p className="mt-5 text-base leading-7 text-[var(--muted)] sm:text-lg">Technologies I use across coursework, personal builds, and production-style projects.</p>
         </div>
 
-        <div className="grid md:grid-cols-2 xl:grid-cols-4 gap-4 md:gap-6">
+        <div className="grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
           {skillCategories.map((category) => (
-            <div
-              key={category.title}
-              className={`card p-4 md:p-6 bg-gradient-to-br ${category.bgColor} border border-gradient-to-r ${category.borderColor} hover:shadow-2xl hover:shadow-${category.color}/20 transition-all duration-300 hover:-translate-y-1`}
-            >
-              <div className="flex items-center gap-3 mb-4 md:mb-6">
-                <div className={`w-10 h-10 md:w-12 md:h-12 bg-gradient-to-br ${category.color} rounded-xl flex items-center justify-center flex-shrink-0 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <category.icon className="w-5 h-5 md:w-6 md:h-6 text-white" />
-                </div>
-                <h3 className="text-lg md:text-xl font-bold">{category.title}</h3>
+            <div key={category.title} className="card group p-5 sm:p-6">
+              <div className={`mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-gradient-to-br ${category.color} text-white shadow-lg transition-transform duration-300 group-hover:scale-110`}>
+                <category.icon className="h-6 w-6" />
               </div>
-              <div className="space-y-3">
+              <h3 className="text-xl font-bold">{category.title}</h3>
+              <p className="mt-2 min-h-12 text-sm leading-6 text-[var(--muted)]">{category.description}</p>
+              <div className="mt-6 flex flex-wrap gap-2">
                 {category.skills.map((skill) => (
-                  <SkillBar key={skill.name} skill={skill} color={category.color} />
+                  <span key={skill} className="inline-flex items-center gap-1.5 rounded-lg border border-[var(--border)] bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-[var(--foreground)] transition-colors hover:border-[var(--primary)]/50 hover:text-[var(--primary)]">
+                    {React.createElement(skillIcons[skill], { className: 'h-3.5 w-3.5 text-[var(--primary)]' })}
+                    {skill}
+                  </span>
                 ))}
               </div>
             </div>

@@ -3,56 +3,60 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Menu, X, Mail, Globe, Code, User, Briefcase } from 'lucide-react';
 
+const navItems = [
+  { name: 'Home', href: '#home', icon: Globe },
+  { name: 'About', href: '#about', icon: User },
+  { name: 'Projects', href: '#projects', icon: Briefcase },
+  { name: 'Skills', href: '#skills', icon: Code },
+  { name: 'Contact', href: '#contact', icon: Mail }
+];
+
 export const Navigation: React.FC = () => {
   const [scrolled, setScrolled] = useState(false);
   const [isOpen, setIsOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
-  const navItems = [
-    { name: 'Home', href: '#home', icon: Globe },
-    { name: 'About', href: '#about', icon: User },
-    { name: 'Projects', href: '#projects', icon: Briefcase },
-    { name: 'Skills', href: '#skills', icon: Code },
-    { name: 'Contact', href: '#contact', icon: Mail }
-  ];
-
   useEffect(() => {
-    let ticking = false;
-
     const handleScroll = () => {
-      if (!ticking) {
-        window.requestAnimationFrame(() => {
-          setScrolled(window.scrollY > 50);
-
-          const sections = navItems.map(item => item.href.substring(1));
-          const scrollPosition = window.scrollY + 100;
-
-          for (const section of sections) {
-            const element = document.getElementById(section);
-            if (element) {
-              const { offsetTop, offsetHeight } = element;
-              if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
-                setActiveSection(section);
-                break;
-              }
-            }
-          }
-          ticking = false;
-        });
-        ticking = true;
-      }
+      setScrolled(window.scrollY > 40);
+      if (window.scrollY < 160) setActiveSection('home');
     };
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const visibleSection = entries
+          .filter((entry) => entry.isIntersecting)
+          .sort((a, b) => b.intersectionRatio - a.intersectionRatio)[0];
+
+        if (visibleSection) setActiveSection(visibleSection.target.id);
+      },
+      { rootMargin: '-22% 0px -58% 0px', threshold: [0.05, 0.2, 0.5] }
+    );
+
+    navItems.forEach((item) => {
+      const section = document.getElementById(item.href.substring(1));
+      if (section) observer.observe(section);
+    });
 
     window.addEventListener('scroll', handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      observer.disconnect();
+    };
   }, []);
 
   const handleNavClick = useCallback((e: React.MouseEvent, href: string) => {
     e.preventDefault();
     const element = document.querySelector(href);
     if (element) {
-      element.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      const offset = 112;
+      const anchor = href === '#home' ? element : (element.querySelector('.badge') ?? element);
+      const top = href === '#home'
+        ? 0
+        : anchor.getBoundingClientRect().top + window.scrollY - offset;
+      setActiveSection(href.substring(1));
+      window.scrollTo({ top, behavior: 'smooth' });
       setIsOpen(false);
     }
   }, []);
@@ -60,10 +64,8 @@ export const Navigation: React.FC = () => {
   return (
     <>
       <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled 
-            ? 'bg-[var(--background)]/95 backdrop-blur-xl border-b border-[var(--border)] shadow-xl' 
-            : 'bg-transparent'
+        className={`fixed top-0 left-0 right-0 z-50 border-b border-[var(--border)]/70 bg-[var(--background)]/95 backdrop-blur-xl transition-all duration-300 ${
+          scrolled ? 'shadow-xl shadow-black/10' : 'shadow-lg shadow-black/5'
         }`}
       >
         <div className="container mx-auto px-6">
@@ -71,7 +73,15 @@ export const Navigation: React.FC = () => {
             {/* Logo */}
             <div
               className="flex items-center gap-3 cursor-pointer group"
+              role="button"
+              tabIndex={0}
+              aria-label="Back to top"
               onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+              onKeyDown={(event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                  window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+              }}
             >
               <div className="w-10 h-10 bg-gradient-to-br from-[var(--primary)] to-[var(--secondary)] rounded-xl flex items-center justify-center text-white font-bold text-sm shadow-lg group-hover:scale-110 transition-transform duration-200">
                 DJ

@@ -29,7 +29,7 @@ export const About: React.FC = () => {
   ];
 
   const stats = [
-    { icon: Award, value: "3+", label: "Real Projects", color: "from-blue-500 to-cyan-400" },
+    { icon: Award, value: "4+", label: "Real Projects", color: "from-blue-500 to-cyan-400" },
     { icon: GraduationCap, value: "3rd", label: "Year Student", color: "from-purple-500 to-pink-400" },
     { icon: Target, value: "HPTU", label: "University", color: "from-green-500 to-emerald-400" },
   ];
@@ -45,7 +45,7 @@ export const About: React.FC = () => {
             <span className="gradient-text">About Me</span>
           </h2>
           <p className="text-[var(--foreground)] opacity-70 text-base md:text-lg max-w-2xl mx-auto">
-            I'm a passionate full-stack developer with expertise in modern web technologies.
+            I&apos;m a passionate full-stack developer with expertise in modern web technologies.
             Currently pursuing BTech and building real-world projects.
           </p>
         </div>
@@ -68,7 +68,7 @@ export const About: React.FC = () => {
             </div>
 
             <p className="text-[var(--foreground)] opacity-80 mb-6 leading-relaxed text-sm md:text-base">
-              I'm a passionate Full Stack Web Developer pursuing BTech at Himachal Pradesh Technical University.
+              I&apos;m a passionate Full Stack Web Developer pursuing BTech at Himachal Pradesh Technical University.
               I love creating beautiful, functional, and user-centered digital experiences.
             </p>
 

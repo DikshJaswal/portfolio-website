@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import Lenis from 'lenis';
 
 interface SmoothScrollProviderProps {
@@ -8,14 +8,10 @@ interface SmoothScrollProviderProps {
 }
 
 export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ children }) => {
-  const [lenis, setLenis] = useState<Lenis | null>(null);
-
   useEffect(() => {
     const lenisInstance = new Lenis({
       duration: 1.2,
     });
-
-    setLenis(lenisInstance);
 
     function raf(time: number) {
       lenisInstance.raf(time);
@@ -26,7 +22,6 @@ export const SmoothScrollProvider: React.FC<SmoothScrollProviderProps> = ({ chil
 
     return () => {
       lenisInstance.destroy();
-      setLenis(null);
     };
   }, []);
 

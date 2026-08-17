@@ -33,16 +33,26 @@ export const Projects: React.FC = () => {
     },
     {
       id: 2,
-      title: "Multi-Vendor Marketplace",
-      description: "E-commerce platform with multi-vendor support",
-      image: "/marketplace-ecommerce.png",
-      tech: ["React", "Node.js", "Express", "MongoDB"],
-      liveUrl: "https://multi-vendor-marketplace-flax.vercel.app",
-      githubUrl: "https://github.com/DikshJaswal/multi-vendor-marketplace",
+      title: "FinPilot",
+      description: "Full-stack personal finance tracker with budgets, transactions, and analytics",
+      image: "/FinPilot.png",
+      tech: ["React", "Vite", "Tailwind CSS", "Node.js", "Express", "MongoDB", "JWT"],
+      liveUrl: "https://fin-pilot-zeta-dun.vercel.app/",
+      githubUrl: "https://github.com/DikshJaswal/FinPilot",
       category: "web"
     },
     {
       id: 3,
+      title: "Resolve",
+      description: "Role-based customer support workspace for tickets, conversations, and team workflows",
+      image: "/Resolve.png",
+      tech: ["React", "TypeScript", "Vite", "Tailwind CSS", "Express", "MySQL", "Cloudinary"],
+      liveUrl: "https://resolve-pink-eight.vercel.app/",
+      githubUrl: "https://github.com/DikshJaswal/RESOLVE",
+      category: "web"
+    },
+    {
+      id: 4,
       title: "CodeFlow Debugger",
       description: "JavaScript debugging and code analysis tool",
       image: "/codeflow-debugger.png",
@@ -63,29 +73,28 @@ export const Projects: React.FC = () => {
     : projects.filter(project => project.category === selectedCategory);
 
   return (
-    <section id="projects" className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-12">
-          <div className="inline-block mb-4">
-            <span className="badge">Featured Projects</span>
+    <section id="projects" className="section-shell py-20 md:py-28">
+      <div className="container mx-auto px-5 sm:px-8">
+        <div className="mb-12 flex flex-col gap-5 md:mb-16 md:flex-row md:items-end md:justify-between">
+          <div className="max-w-2xl">
+            <span className="badge">Selected work</span>
+            <h2 className="mt-5 text-4xl font-bold sm:text-5xl">Things I&apos;ve <span className="gradient-text">built.</span></h2>
+            <p className="mt-5 text-base leading-7 text-[var(--muted)] sm:text-lg">
+              Real applications that solve a problem, exercise a full stack, and keep me learning.
+            </p>
           </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">My Work</span>
-          </h2>
-          <p className="text-[var(--foreground)] opacity-70 text-lg max-w-2xl mx-auto">
-            Innovative projects that showcase technical skills and creative problem-solving.
-          </p>
+          <span className="text-sm font-medium text-[var(--muted)]">{projects.length} projects · full stack</span>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-3 mb-10">
+        <div className="mb-10 flex flex-wrap gap-2">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setSelectedCategory(category.id)}
-              className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-200 ${
+                className={`rounded-xl border px-4 py-2.5 text-sm font-medium transition-all duration-200 ${
                 selectedCategory === category.id 
-                  ? 'bg-[var(--primary)] text-white' 
-                  : 'bg-[var(--card-bg)] text-[var(--foreground)] hover:bg-[var(--card-hover)]'
+                  ? 'border-[var(--primary)] bg-[var(--primary)] text-white shadow-lg shadow-blue-500/20'
+                  : 'border-[var(--border)] bg-[var(--card-bg)] text-[var(--muted)] hover:border-[var(--primary)]/50 hover:text-[var(--foreground)]'
               }`}
             >
               <category.icon className="w-4 h-4 inline mr-2" />
@@ -94,19 +103,19 @@ export const Projects: React.FC = () => {
           ))}
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
           {filteredProjects.map((project) => (
             <div
               key={project.id}
-              className="card overflow-hidden"
+              className="card group flex h-full flex-col overflow-hidden"
             >
-              <div className="relative h-56 overflow-hidden bg-[var(--card-bg)]">
+              <div className="relative aspect-[16/10] overflow-hidden bg-[var(--card-bg)]">
                 <Image
                   src={project.image}
                   alt={project.title}
                   width={600}
                   height={400}
-                  className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  className="h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
                 />
                 {project.featured && (
                   <div className="absolute top-3 right-3 bg-gradient-to-r from-[var(--primary)] to-[var(--secondary)] text-white px-3 py-1.5 rounded-full text-xs font-bold shadow-lg">
@@ -115,36 +124,38 @@ export const Projects: React.FC = () => {
                 )}
               </div>
 
-              <div className="p-5">
-                <h3 className="text-xl font-bold mb-2">{project.title}</h3>
-                <p className="text-[var(--foreground)] opacity-70 text-sm mb-4">
+              <div className="flex flex-1 flex-col p-5">
+                <h3 className="mb-2 text-xl font-bold">{project.title}</h3>
+                <p className="mb-5 text-sm leading-6 text-[var(--muted)]">
                   {project.description}
                 </p>
                 
-                <div className="flex flex-wrap gap-2 mb-4">
+                <div className="mb-6 flex flex-wrap gap-2">
                   {project.tech.map((tech) => (
-                    <span key={tech} className="px-3 py-1.5 bg-gradient-to-r from-[var(--primary)]/10 to-[var(--secondary)]/10 border border-[var(--primary)]/30 text-[var(--primary)] text-xs font-medium rounded-full hover:border-[var(--primary)] hover:from-[var(--primary)]/20 hover:to-[var(--secondary)]/20 transition-all duration-200">
+                    <span key={tech} className="rounded-lg border border-[var(--border)] bg-white/[0.04] px-2.5 py-1.5 text-xs font-medium text-[var(--muted)] transition-colors hover:border-[var(--primary)]/50 hover:text-[var(--primary)]">
                       {tech}
                     </span>
                   ))}
                 </div>
                 
-                <div className="flex gap-2">
-                  <a
-                    href={project.githubUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex-1 bg-[var(--card-bg)] border border-[var(--border)] text-[var(--foreground)] px-3 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover-lift"
-                  >
-                    <Github className="w-4 h-4" />
-                    Code
-                  </a>
+                <div className="mt-auto grid grid-cols-2 gap-2">
+                  {project.githubUrl && (
+                    <a
+                      href={project.githubUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-center justify-center gap-2 rounded-xl border border-[var(--border)] bg-white/[0.03] px-3 py-2.5 text-sm font-medium text-[var(--foreground)] hover-lift"
+                    >
+                      <Github className="w-4 h-4" />
+                      Code
+                    </a>
+                  )}
                   {project.liveUrl && (
                     <a
                       href={project.liveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex-1 bg-[var(--primary)] text-white px-3 py-2 rounded-lg text-sm font-medium flex items-center justify-center gap-2 hover-lift"
+                      className="flex items-center justify-center gap-2 rounded-xl bg-[var(--primary)] px-3 py-2.5 text-sm font-medium text-white hover-lift"
                     >
                       <ExternalLink className="w-4 h-4" />
                       Demo

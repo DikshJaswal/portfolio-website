@@ -92,25 +92,20 @@ export const Contact: React.FC = () => {
   ];
 
   return (
-    <section id="contact" className="py-20 relative">
-      <div className="container mx-auto px-6">
-        <div className="text-center mb-16">
-          <div className="inline-block mb-4">
-            <span className="badge">Get In Touch</span>
-          </div>
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
-            <span className="gradient-text">Contact Me</span>
-          </h2>
-          <p className="text-[var(--foreground)] opacity-70 text-lg max-w-2xl mx-auto">
-            Have questions about my projects or want to discuss opportunities?
-            Feel free to reach out - I'm always happy to connect!
+    <section id="contact" className="section-shell py-20 md:py-28">
+      <div className="container mx-auto px-5 sm:px-8">
+        <div className="mx-auto mb-12 max-w-2xl text-center md:mb-16">
+          <span className="badge">Let&apos;s connect</span>
+          <h2 className="mt-5 text-4xl font-bold sm:text-5xl">Have a project in <span className="gradient-text">mind?</span></h2>
+          <p className="mt-5 text-base leading-7 text-[var(--muted)] sm:text-lg">
+            I&apos;m open to internships, collaborations, and conversations about building useful products.
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+        <div className="mx-auto grid max-w-5xl gap-6 md:grid-cols-[1.1fr_0.9fr] md:gap-8">
           {/* Contact Form */}
           <div
-            className={`card p-8 hover:shadow-2xl hover:shadow-[var(--primary)]/20 transition-all duration-500 ${
+            className={`card p-5 sm:p-8 hover:shadow-2xl hover:shadow-[var(--primary)]/20 transition-all duration-500 ${
               isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
             }`}
           >
@@ -120,7 +115,7 @@ export const Contact: React.FC = () => {
                   <Send className="w-10 h-10 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-2">Message Sent!</h3>
-                <p className="text-[var(--foreground)] opacity-70">Thank you for reaching out. I'll get back to you soon.</p>
+                <p className="text-[var(--foreground)] opacity-70">Thank you for reaching out. I&apos;ll get back to you soon.</p>
               </div>
             ) : (
               <form onSubmit={handleSubmit} className="space-y-6">
@@ -201,7 +196,10 @@ export const Contact: React.FC = () => {
             className={`space-y-5 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'}`}
             style={{ transitionDelay: '200ms' }}
           >
-            <h3 className="text-2xl font-bold mb-6">Contact Information</h3>
+            <div className="mb-6">
+              <p className="eyebrow mb-2">Direct line</p>
+              <h3 className="text-2xl font-bold">Contact information</h3>
+            </div>
             {contactInfo.map((info, index) => (
               <div
                 key={info.label}
@@ -217,7 +215,7 @@ export const Contact: React.FC = () => {
                   <div className="text-[var(--foreground)] opacity-60 text-sm font-medium mb-1">
                     {info.label}
                   </div>
-                  <div className="text-[var(--foreground)] font-semibold group-hover:text-[var(--primary)] transition-colors duration-300">
+                  <div className="break-all text-sm font-semibold text-[var(--foreground)] group-hover:text-[var(--primary)] transition-colors duration-300 sm:text-base">
                     {info.value}
                   </div>
                 </div>
