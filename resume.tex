@@ -1,21 +1,21 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[margin=0.45in,top=0.38in,bottom=0.38in]{geometry}
+\usepackage[margin=0.42in,top=0.34in,bottom=0.34in]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{titlesec}
 \usepackage{lmodern}
 
-% Strict 1-Page ATS Formatting
+% Strict 1-Page ATS Formatting with All 4 Projects & Experience
 \setlength{\parindent}{0pt}
-\setlist[itemize]{nosep, leftmargin=1.1em, itemsep=1.5pt}
+\setlist[itemize]{nosep, leftmargin=1.1em, itemsep=1.2pt}
 \titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{5pt}{2.5pt}
+\titlespacing{\section}{0pt}{4.5pt}{2pt}
 
 \begin{document}
 
 %=================== HEADER ===================
 \begin{center}
-    {\LARGE \textbf{DIKSHIT JASWAL}}\\[2pt]
+    {\LARGE \textbf{DIKSHIT JASWAL}}\\[1.5pt]
     Hamirpur, Himachal Pradesh, India \ \textbar \ +91-9317084250 \ \textbar \ \href{mailto:dikshitjaswal1922@gmail.com}{dikshitjaswal1922@gmail.com}\\[1.5pt]
     \href{https://portfolio-website-lake-nine-35.vercel.app/}{Portfolio: portfolio-website-lake-nine-35.vercel.app} \ \textbar \ \href{https://linkedin.com/in/dikshit-jaswal-a0172a379}{LinkedIn: in/dikshit-jaswal-a0172a379} \ \textbar \ \href{https://github.com/DikshJaswal}{GitHub: github.com/DikshJaswal}
 \end{center}
@@ -45,18 +45,25 @@ Final-year Computer Science student and Full-Stack Software Developer with indus
 \textbf{MERN Stack Development Intern} \hfill \textit{Jun 2026 -- Aug 2026}\\
 \textbf{INPHORA Pvt. Ltd.} \hfill \textit{Remote / Hamirpur, India}
 \begin{itemize}
-    \item Developed full-stack modules for FinPilot using React, Node.js, Express, and MongoDB, implementing compound-indexed schemas for transaction CRUD, category breakdowns, and automated monthly budget calculations.
-    \item Integrated Recharts telemetry dashboards with spending threshold alerts and engineered secure JWT stateless authentication with bcrypt password encryption, Helmet security headers, and client-side CSV statement exports.
+    \item Developed full-stack modules for personal finance web applications using React, Node.js, Express, and MongoDB, implementing compound-indexed schemas for fast transaction CRUD and automated monthly budget calculations.
+    \item Engineered responsive telemetry dashboards with Recharts and built secure JWT authentication with client-side CSV statement exports.
 \end{itemize}
 
 %=================== FEATURED PROJECTS ===================
 \section*{Featured Projects}
 
-\textbf{API Sentinel — Synthetic API Health Monitoring \& Incident Dispatcher} \hfill \href{https://api-sentinel-psi.vercel.app/dashboard}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/api-sentinel}{\textit{GitHub}}\\
-\textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Twilio SendGrid, Chart.js, Turbopack}
+\textbf{CodeFlow — JavaScript Execution Visualizer \& AST Step-Debugger} \hfill \href{https://codeflow-javascript-debugger.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/codeflow-javascript-debugger}{\textit{GitHub}}\\
+\textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Turbopack, Vitest, Monaco Editor}
 \begin{itemize}
-    \item Architected an automated synthetic monitoring platform that continuously probes microservices across deployed full-stack applications (RESOLVE, FinPilot, CodeFlow), evaluating p95 latencies and SLA uptime scores.
-    \item Engineered an incident notification pipeline integrating Twilio SendGrid (Email) and Twilio SMS over HTTPS REST APIs, featuring state-aware alert deduplication and automated recovery confirmations to eliminate notification fatigue.
+    \item Architected a client-side JavaScript execution engine and step-debugger using AST-based parsing, supporting variable reassignments, compound operators, and object/array mutations with 100\% test coverage.
+    \item Engineered a real-time visualizer featuring dynamic call stack frames, synchronized breakpoint controls, adjustable playback speeds (0.5x--2x), and pre-configured algorithmic presets with zero-error static typing.
+\end{itemize}
+
+\textbf{FinPilot — Personal Finance \& Budget Management SaaS} \hfill \href{https://fin-pilot-zeta-dun.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/FinPilot}{\textit{GitHub}}\\
+\textit{Technologies: React, Node.js, Express, MongoDB Atlas, Recharts, Tailwind CSS, JWT}
+\begin{itemize}
+    \item Architected a full-stack personal finance application with RESTful APIs supporting transaction CRUD, dynamic monthly budget tracking, and 6-month cashflow analytics using compound-indexed MongoDB queries.
+    \item Engineered responsive telemetry dashboards utilizing Recharts with budget alert thresholds (80\% warning, 100\% exceeded), 1-click recruiter demo authentication, and client-side CSV statement exports.
 \end{itemize}
 
 \textbf{RESOLVE — Enterprise IT Helpdesk \& SLA Management SaaS} \hfill \href{https://resolve-pink-eight.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/RESOLVE}{\textit{GitHub}}\\
@@ -66,19 +73,11 @@ Final-year Computer Science student and Full-Stack Software Developer with indus
     \item Migrated database architecture from legacy trial hosting to a scalable TiDB Cloud serverless MySQL cluster; implemented 1-click recruiter demo authentication, rate-limiting security, and an automated end-to-end test suite verifying 19/19 feature flows.
 \end{itemize}
 
-\textbf{CodeFlow — JavaScript Execution Visualizer \& AST Step-Debugger} \hfill \href{https://codeflow-javascript-debugger.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/codeflow-javascript-debugger}{\textit{GitHub}}\\
-\textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Turbopack, Vitest, Monaco Editor}
+\textbf{API Sentinel — Synthetic API Health Monitoring \& Incident Dispatcher} \hfill \href{https://api-sentinel-psi.vercel.app/dashboard}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/api-sentinel}{\textit{GitHub}}\\
+\textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Twilio SendGrid, Chart.js, Turbopack}
 \begin{itemize}
-    \item Architected a client-side JavaScript execution engine and step-debugger using AST-based parsing, supporting variable reassignments, compound operators, and object/array mutations with 100\% test coverage.
-    \item Engineered a real-time visualizer featuring dynamic call stack frames, synchronized breakpoint controls, adjustable playback speeds (0.5x--2x), and pre-configured algorithmic presets with zero-error static typing.
-\end{itemize}
-
-%=================== KEY ACHIEVEMENTS ===================
-\section*{Key Achievements}
-\begin{itemize}
-    \item Built and deployed 4 production-grade web applications with 100\% test coverage and automated CI/CD pipelines.
-    \item Engineered cross-application synthetic monitoring linking live Render and Vercel microservices into a unified observability hub.
-    \item Active open-source contributor on GitHub with verified public codebases and complete technical documentation.
+    \item Architected an automated synthetic monitoring platform that continuously probes microservices across deployed full-stack applications (RESOLVE, FinPilot, CodeFlow), evaluating p95 latencies and SLA uptime scores.
+    \item Engineered an incident notification pipeline integrating Twilio SendGrid (Email) and Twilio SMS over HTTPS REST APIs, featuring state-aware alert deduplication and automated recovery confirmations to eliminate notification fatigue.
 \end{itemize}
 
 \end{document}
