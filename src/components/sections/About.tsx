@@ -51,7 +51,7 @@ export const About: React.FC = () => {
 
   const stats = [
     { icon: Award, value: "4+", label: "Production Apps", color: "from-blue-500 to-cyan-400" },
-    { icon: GraduationCap, value: "3rd", label: "Year B.Tech CSE", color: "from-purple-500 to-pink-400" },
+    { icon: GraduationCap, value: "Final", label: "Year B.Tech CSE", color: "from-purple-500 to-pink-400" },
     { icon: Target, value: "HPTU", label: "University", color: "from-green-500 to-emerald-400" },
   ];
 
@@ -103,7 +103,7 @@ export const About: React.FC = () => {
                   <strong className="text-[var(--primary)]">Bachelor of Technology in Computer Science & Engineering</strong>
                 </p>
                 <p className="text-[var(--foreground)] opacity-60 text-xs md:text-sm">
-                  Himachal Pradesh Technical University (2023 - 2027) · CGPA: 7.04 / 10.0
+                  Himachal Pradesh Technical University · CGPA: 7.26 / 10.0
                 </p>
               </div>
             </div>
