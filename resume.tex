@@ -1,40 +1,40 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[margin=0.48in,top=0.42in,bottom=0.42in]{geometry}
+\usepackage[margin=0.45in,top=0.38in,bottom=0.38in]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{titlesec}
 \usepackage{lmodern}
 
-% ATS-Optimized Typography & Spacing
+% Strict 1-Page ATS Formatting
 \setlength{\parindent}{0pt}
-\setlist[itemize]{nosep, leftmargin=1.1em, itemsep=2.0pt}
+\setlist[itemize]{nosep, leftmargin=1.1em, itemsep=1.5pt}
 \titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{7pt}{3pt}
+\titlespacing{\section}{0pt}{5pt}{2.5pt}
 
 \begin{document}
 
 %=================== HEADER ===================
 \begin{center}
-    {\LARGE \textbf{DIKSHIT JASWAL}}\\[2.5pt]
-    Hamirpur, Himachal Pradesh, India \ \textbar \ +91-9317084250 \ \textbar \ \href{mailto:dikshitjaswal1922@gmail.com}{dikshitjaswal1922@gmail.com}\\[2pt]
-    \href{https://portfolio-website-lake-nine-35.vercel.app/}{Portfolio: portfolio-website-lake-nine-35.vercel.app} \ \textbar \ \href{https://linkedin.com/in/dikshit-jaswal-a0172a379}{LinkedIn: linkedin.com/in/dikshit-jaswal-a0172a379} \ \textbar \ \href{https://github.com/DikshJaswal}{GitHub: github.com/DikshJaswal}
+    {\LARGE \textbf{DIKSHIT JASWAL}}\\[2pt]
+    Hamirpur, Himachal Pradesh, India \ \textbar \ +91-9317084250 \ \textbar \ \href{mailto:dikshitjaswal1922@gmail.com}{dikshitjaswal1922@gmail.com}\\[1.5pt]
+    \href{https://portfolio-website-lake-nine-35.vercel.app/}{Portfolio: portfolio-website-lake-nine-35.vercel.app} \ \textbar \ \href{https://linkedin.com/in/dikshit-jaswal-a0172a379}{LinkedIn: in/dikshit-jaswal-a0172a379} \ \textbar \ \href{https://github.com/DikshJaswal}{GitHub: github.com/DikshJaswal}
 \end{center}
 
 %=================== PROFESSIONAL SUMMARY ===================
 \section*{Professional Summary}
-Final-year Computer Science student and Full-Stack Software Developer with industry internship experience and four production-deployed systems. Experienced in architecting scalable SaaS platforms, distributed synthetic health monitors, and AST execution engines using TypeScript, React, Next.js, Node.js, Express, and cloud databases (TiDB Serverless MySQL, MongoDB Atlas). Proven ability in automated testing, zero-downtime database migrations, and real-time incident alerting pipelines. Seeking an SDE / Full Stack Developer role.
+Final-year Computer Science student and Full-Stack Software Developer with industry internship experience and four production-deployed systems. Experienced in architecting scalable SaaS platforms, distributed synthetic health monitors, and AST execution engines using TypeScript, React, Next.js, Node.js, Express, and cloud databases (TiDB Serverless MySQL, MongoDB Atlas). Demonstrated track record in automated testing, zero-downtime database migrations, and real-time incident alerting pipelines. Seeking an SDE / Full-Stack Developer role.
 
 %=================== EDUCATION ===================
 \section*{Education}
 \textbf{Himachal Pradesh Technical University}, Hamirpur, India \hfill \textit{Expected Graduation: July 2027}\\
 \textit{Bachelor of Technology in Computer Science and Engineering} \hfill \textbf{CGPA: 7.26 / 10.0}\\
-\textit{Core Coursework:} Data Structures \& Algorithms, Database Management Systems (DBMS), Operating Systems, Computer Networks, Object-Oriented Programming (OOP), System Design Fundamentals.
+\textit{Relevant Coursework:} Data Structures \& Algorithms, DBMS, Operating Systems, Computer Networks, OOP, System Design.
 
 %=================== TECHNICAL SKILLS ===================
 \section*{Technical Skills}
 \begin{itemize}[leftmargin=*]
     \item \textbf{Languages:} JavaScript (ES6+), TypeScript, SQL, Python, C++, HTML5, CSS3
-    \item \textbf{Frontend Development:} React.js, Next.js 16 (App Router), Vite, Tailwind CSS, Recharts, Framer Motion, Chart.js, Monaco Editor
+    \item \textbf{Frontend:} React.js, Next.js 16 (App Router), Vite, Tailwind CSS, Recharts, Framer Motion, Chart.js, Monaco Editor
     \item \textbf{Backend \& APIs:} Node.js, Express.js, RESTful APIs, JWT Authentication, Bcrypt, Helmet, Express-Rate-Limit
     \item \textbf{Databases \& Cloud:} TiDB Cloud (Serverless MySQL), MongoDB Atlas, PostgreSQL, Prisma ORM, Vercel, Render, Cloudinary
     \item \textbf{DevOps \& Testing:} Twilio SendGrid REST API, Twilio SMS, Webhooks, Vitest, Turbopack, Git, GitHub, Postman, Docker
@@ -45,9 +45,8 @@ Final-year Computer Science student and Full-Stack Software Developer with indus
 \textbf{MERN Stack Development Intern} \hfill \textit{Jun 2026 -- Aug 2026}\\
 \textbf{INPHORA Pvt. Ltd.} \hfill \textit{Remote / Hamirpur, India}
 \begin{itemize}
-    \item Engineered full-stack modules for FinPilot, a personal finance web application, implementing compound-indexed MongoDB queries and Express REST APIs to handle transaction CRUD and automated monthly budget calculations.
-    \item Architected responsive data-visualization dashboards with React and Recharts, improving telemetry render performance by 35\% across multi-month cashflow charts.
-    \item Implemented secure JWT stateless authentication with bcrypt password encryption, Helmet security headers, and client-side CSV financial statement export pipelines.
+    \item Developed full-stack modules for FinPilot using React, Node.js, Express, and MongoDB, implementing compound-indexed schemas for transaction CRUD, category breakdowns, and automated monthly budget calculations.
+    \item Integrated Recharts telemetry dashboards with spending threshold alerts and engineered secure JWT stateless authentication with bcrypt password encryption, Helmet security headers, and client-side CSV statement exports.
 \end{itemize}
 
 %=================== FEATURED PROJECTS ===================
@@ -58,23 +57,20 @@ Final-year Computer Science student and Full-Stack Software Developer with indus
 \begin{itemize}
     \item Architected an automated synthetic monitoring platform that continuously probes microservices across deployed full-stack applications (RESOLVE, FinPilot, CodeFlow), evaluating p95 latencies and SLA uptime scores.
     \item Engineered an incident notification pipeline integrating Twilio SendGrid (Email) and Twilio SMS over HTTPS REST APIs, featuring state-aware alert deduplication and automated recovery confirmations to eliminate notification fatigue.
-    \item Built a real-time observability workbench with multi-service dynamic registries, interactive latency distribution charts, configurable SLA thresholds, and sub-second health verification.
 \end{itemize}
 
 \textbf{RESOLVE — Enterprise IT Helpdesk \& SLA Management SaaS} \hfill \href{https://resolve-pink-eight.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/RESOLVE}{\textit{GitHub}}\\
 \textit{Technologies: React, TypeScript, Node.js, Express, TiDB Cloud Serverless (MySQL), Cloudinary, Tailwind CSS}
 \begin{itemize}
-    \item Engineered a full-stack IT service desk platform with granular Role-Based Access Control (Admin, Agent, Customer), conversation threads, attachment handling, and real-time SLA escalation warning timers.
-    \item Migrated database architecture from legacy trial hosting to a scalable TiDB Cloud serverless MySQL cluster, designing a multi-step database initialization engine and seeding 19 verified feature flows.
-    \item Implemented 1-click recruiter demo authentication, rate-limiting brute-force defense, Helmet security headers, and an automated end-to-end integration test suite verifying 19/19 business logic operations.
+    \item Built a full-stack IT service desk platform with granular Role-Based Access Control (Admin, Agent, Customer), conversation threads, attachment handling, and real-time SLA escalation warning timers.
+    \item Migrated database architecture from legacy trial hosting to a scalable TiDB Cloud serverless MySQL cluster; implemented 1-click recruiter demo authentication, rate-limiting security, and an automated end-to-end test suite verifying 19/19 feature flows.
 \end{itemize}
 
 \textbf{CodeFlow — JavaScript Execution Visualizer \& AST Step-Debugger} \hfill \href{https://codeflow-javascript-debugger.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/codeflow-javascript-debugger}{\textit{GitHub}}\\
 \textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Turbopack, Vitest, Monaco Editor}
 \begin{itemize}
     \item Architected a client-side JavaScript execution engine and step-debugger using AST-based parsing, supporting variable reassignments, compound operators, and object/array mutations with 100\% test coverage.
-    \item Engineered a real-time execution visualizer featuring dynamic call stack frames, synchronized breakpoint management, adjustable playback speeds (0.5x--2x), and sub-10ms state updates without external runtimes.
-    \item Designed an interactive developer workbench with reactive variable inspectors, animated memory diffs, filterable console streams, and pre-configured algorithmic presets with zero-error static typing.
+    \item Engineered a real-time visualizer featuring dynamic call stack frames, synchronized breakpoint controls, adjustable playback speeds (0.5x--2x), and pre-configured algorithmic presets with zero-error static typing.
 \end{itemize}
 
 %=================== KEY ACHIEVEMENTS ===================
