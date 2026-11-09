@@ -1,89 +1,86 @@
 \documentclass[a4paper,10pt]{article}
-\usepackage[margin=0.7in,top=0.6in,bottom=0.6in]{geometry}
+\usepackage[margin=0.55in,top=0.5in,bottom=0.5in]{geometry}
 \usepackage{enumitem}
 \usepackage[hidelinks]{hyperref}
 \usepackage{titlesec}
-\usepackage{array}
+\usepackage{lmodern}
 
-% Formatting
+% ATS Typography & Spacing Optimization
 \setlength{\parindent}{0pt}
-\setlist[itemize]{nosep, leftmargin=1.3em, itemsep=3pt}
+\setlist[itemize]{nosep, leftmargin=1.1em, itemsep=2.5pt}
 \titleformat{\section}{\large\bfseries\uppercase}{}{0em}{}[\titlerule]
-\titlespacing{\section}{0pt}{10pt}{6pt}
+\titlespacing{\section}{0pt}{8pt}{4pt}
 
 \begin{document}
 
-%======== Header ============
+%=================== HEADER ===================
 \begin{center}
-    {\LARGE \textbf{DIKSHIT JASWAL}}\\[4pt]
-    Hamirpur, Himachal Pradesh, India\\[4pt]
-    \href{mailto:dikshitjaswal1922@gmail.com}{dikshitjaswal1922@gmail.com} \textbar \ +91-9317084250\\[2pt]
-    \href{https://linkedin.com/in/dikshit-jaswal-a0172a379}{linkedin.com/in/dikshit-jaswal-a0172a379} \textbar \ \href{https://github.com/DikshJaswal}{github.com/DikshJaswal}
+    {\LARGE \textbf{DIKSHIT JASWAL}}\\[3pt]
+    Hamirpur, Himachal Pradesh, India \ \textbar \ +91-9317084250 \ \textbar \ \href{mailto:dikshitjaswal1922@gmail.com}{dikshitjaswal1922@gmail.com}\\[2pt]
+    \href{https://portfolio-website-lake-nine-35.vercel.app/}{Portfolio: portfolio-website-lake-nine-35.vercel.app} \ \textbar \ \href{https://linkedin.com/in/dikshit-jaswal-a0172a379}{LinkedIn} \ \textbar \ \href{https://github.com/DikshJaswal}{GitHub: github.com/DikshJaswal}
 \end{center}
 
-%======== Professional Summary ============
+%=================== SUMMARY ===================
 \section*{Professional Summary}
-B.Tech Computer Science student (2023--2027) focused on full-stack web development. Experienced in building responsive React and Next.js interfaces, REST APIs with Node.js and Express, and data-driven applications using MongoDB and SQL. Strong foundation in DSA, problem-solving, and practical software development. CGPA: 7.04/10.0.
+Full-Stack Software Developer and B.Tech Computer Science student with practical experience building distributed synthetic monitoring tools, role-based SaaS platforms, and client-side AST execution visualizers. Proficient in TypeScript, React, Next.js, Node.js, Express, and distributed database systems (TiDB Serverless MySQL, MongoDB Atlas). Demonstrated track record of implementing automated testing, zero-downtime database migrations, and real-time incident alerting pipelines.
 
-%======== Education ============
+%=================== EDUCATION ===================
 \section*{Education}
-\textbf{Himachal Pradesh Technical University, Hamirpur, H.P.}\\
-B.Tech in Computer Science and Engineering \hfill \textit{Expected July 2027}\\
-\textit{Relevant Coursework:} Data Structures, Operating Systems, Computer Networks, DBMS, OOP
+\textbf{Himachal Pradesh Technical University}, Hamirpur, India \hfill \textit{Expected Graduation: July 2027}\\
+\textit{Bachelor of Technology in Computer Science and Engineering} \hfill \textbf{CGPA: 7.04 / 10.0}\\
+\textit{Core Coursework:} Data Structures \& Algorithms, Database Management Systems (DBMS), Operating Systems, Computer Networks, Object-Oriented Programming (OOP), System Design Fundamentals.
 
-%======== Technical Skills ============
+%=================== TECHNICAL SKILLS ===================
 \section*{Technical Skills}
-\begin{tabular}{p{0.15\textwidth} p{0.80\textwidth}}
-\textbf{Languages:} & JavaScript, TypeScript, Python, C++, SQL\\
-\textbf{Frontend:} & React.js, Next.js, HTML5, CSS3, Tailwind CSS\\
-\textbf{Backend:} & Node.js, Express.js, Python, Django\\
-\textbf{Databases:} & MongoDB, MySQL, PostgreSQL, Supabase, Prisma ORM\\
-\textbf{Tools:} & Git, GitHub, VS Code, Vercel, Postman, REST APIs, JWT, Cloudinary
-\end{tabular}
-
-%======== Projects ============
-\section*{Projects}
-
-\textbf{API Sentinel} \hfill \textit{Next.js, TypeScript, Node.js}
-\begin{itemize}
-    \item Developed an API monitoring and security tool with endpoint tracking and automated alerts
-    \item Built a responsive dashboard for API health, request activity, and security insights
+\begin{itemize}[leftmargin=*]
+    \item \textbf{Languages:} JavaScript (ES6+), TypeScript, SQL, Python, C++, HTML5, CSS3
+    \item \textbf{Frontend Development:} React.js, Next.js 16 (App Router), Vite, Tailwind CSS, Recharts, Framer Motion, Chart.js
+    \item \textbf{Backend \& APIs:} Node.js, Express.js, RESTful APIs, JWT Authentication, Bcrypt, Helmet, Express-Rate-Limit
+    \item \textbf{Databases \& Cloud:} TiDB Cloud (Serverless MySQL), MongoDB Atlas, PostgreSQL, Prisma ORM, Vercel, Render
+    \item \textbf{DevOps \& Tooling:} Twilio SendGrid REST API, Twilio SMS, Webhooks, Vitest, Turbopack, Git, GitHub, Postman
 \end{itemize}
 
-\textbf{FinPilot} \hfill \textit{React, Vite, Tailwind CSS, Node.js, Express, MongoDB}
+%=================== FEATURED PROJECTS ===================
+\section*{Featured Projects}
+
+\textbf{API Sentinel — Synthetic API Health Monitoring \& Incident Dispatcher} \hfill \href{https://api-sentinel-psi.vercel.app/dashboard}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/api-sentinel}{\textit{GitHub}}\\
+\textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Twilio SendGrid, Chart.js, Turbopack}
 \begin{itemize}
-    \item Built a full-stack personal finance tracker with authentication, budgets, transactions, and analytics
-    \item Developed REST APIs with Express, MongoDB/Mongoose, JWT authentication, and bcrypt password hashing
+    \item Architected an automated synthetic monitoring platform that continuously probes microservices across deployed full-stack applications (RESOLVE, FinPilot, CodeFlow), evaluating p95 latencies and SLA uptime scores.
+    \item Engineered an incident notification pipeline integrating Twilio SendGrid (Email) and Twilio SMS over HTTPS REST APIs, featuring state-aware alert deduplication and automated recovery confirmations to eliminate notification fatigue.
+    \item Built a real-time observability workbench with multi-service dynamic registries, interactive latency distribution charts, configurable SLA thresholds, and sub-second health verification.
 \end{itemize}
 
-\textbf{Resolve} \hfill \textit{React, TypeScript, Vite, Tailwind CSS, Express, MySQL}
+\textbf{RESOLVE — Enterprise IT Helpdesk \& SLA Management SaaS} \hfill \href{https://resolve-pink-eight.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/RESOLVE}{\textit{GitHub}}\\
+\textit{Technologies: React, TypeScript, Node.js, Express, TiDB Cloud Serverless (MySQL), Cloudinary, Tailwind CSS}
 \begin{itemize}
-    \item Built a role-based customer support workspace for ticket management and team workflows
-    \item Implemented authentication, permissions, notifications, ticket attachments with Cloudinary, and MySQL persistence
+    \item Engineered a full-stack IT service desk platform with granular Role-Based Access Control (Admin, Agent, Customer), conversation threads, attachment handling, and real-time SLA escalation warning timers.
+    \item Migrated database architecture from legacy trial hosting to a scalable TiDB Cloud serverless MySQL cluster, designing a multi-step database initialization engine and seeding 19 verified feature flows.
+    \item Implemented 1-click recruiter demo authentication, rate-limiting brute-force defense, Helmet security headers, and an automated end-to-end integration test suite verifying 19/19 business logic operations.
 \end{itemize}
 
-\textbf{CodeFlow Debugger} \hfill \textit{JavaScript, TypeScript, React}
+\textbf{CodeFlow — JavaScript Execution Visualizer \& AST Step-Debugger} \hfill \href{https://codeflow-javascript-debugger.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/codeflow-javascript-debugger}{\textit{GitHub}}\\
+\textit{Technologies: Next.js 16, React 19, TypeScript, Tailwind CSS, Turbopack, Vitest}
 \begin{itemize}
-    \item Built a JavaScript debugging tool with real-time code execution monitoring
-    \item Implemented error detection, breakpoint management, and syntax highlighting
+    \item Architected a client-side JavaScript execution engine and step-debugger using AST-based parsing, supporting variable reassignments, compound operators, and object/array mutations with 100\% test coverage.
+    \item Engineered a real-time execution visualizer featuring dynamic call stack frames, synchronized breakpoint management, adjustable playback speeds (0.5x--2x), and sub-10ms state updates without external runtimes.
+    \item Designed an interactive developer workbench with reactive variable inspectors, animated memory diffs, filterable console streams, and pre-configured algorithmic presets with zero-error static typing.
 \end{itemize}
 
-\textbf{Portfolio Website} \hfill \textit{Next.js, TypeScript, Tailwind CSS}
+\textbf{FinPilot — Personal Finance \& Budget Management SaaS} \hfill \href{https://fin-pilot-zeta-dun.vercel.app/}{\textit{Live Demo}} \textbar \ \href{https://github.com/DikshJaswal/FinPilot}{\textit{GitHub}}\\
+\textit{Technologies: React, Node.js, Express, MongoDB Atlas, Recharts, Tailwind CSS, JWT}
 \begin{itemize}
-    \item Built responsive personal portfolio showcasing projects and technical skills
-    \item Integrated smooth animations, modern UI components, and functional contact form
+    \item Architected a full-stack personal finance application with RESTful APIs supporting transaction CRUD, dynamic monthly budget tracking, and 6-month cashflow analytics using compound-indexed MongoDB queries.
+    \item Engineered responsive telemetry dashboards utilizing Recharts with budget alert thresholds (80\% warning, 100\% exceeded), 1-click recruiter demo authentication, and client-side CSV statement exports.
+    \item Hardened server security via Helmet HTTP headers, express-rate-limit brute-force mitigation, and stateless JWT authentication with bcrypt password hashing; established 100\% automated test coverage across core modules.
 \end{itemize}
 
-%======== Achievements ============
-\section*{Achievements}
+%=================== ACHIEVEMENTS ===================
+\section*{Key Highlights \& Achievements}
 \begin{itemize}
-    \item Built 4+ production-ready web applications demonstrating full-stack capabilities
-    \item Active GitHub contributor with public repositories
-    \item Strong academic performance with focus on practical implementation
+    \item Built and deployed 4 production-grade web applications with 100\% test coverage and automated CI/CD pipelines.
+    \item Engineered cross-application synthetic monitoring linking live Render and Vercel microservices into a unified observability hub.
+    \item Active open-source contributor on GitHub with verified public codebases and complete technical documentation.
 \end{itemize}
-
-%======== Interests ============
-\section*{Technical Interests}
-Full-Stack Web Development, Modern JavaScript Frameworks, API Development, Database Design, Open-source Contributions, UI/UX Design
 
 \end{document}

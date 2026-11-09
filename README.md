@@ -1,44 +1,39 @@
-https://portfolio-website-lake-nine-35.vercel.app/
+# Dikshit Jaswal — Full-Stack Portfolio
 
-# Dikshit Jaswal — Portfolio
+[![Live Demo](https://img.shields.io/badge/Live_Portfolio-portfolio--website--lake--nine--35.vercel.app-22c55e?style=for-the-badge&logo=vercel)](https://portfolio-website-lake-nine-35.vercel.app/)
+[![Next.js 16](https://img.shields.io/badge/Next.js-16.2.3-black?style=for-the-badge&logo=next.js)](https://nextjs.org/)
+[![React 19](https://img.shields.io/badge/React-19.0.0-61dafb?style=for-the-badge&logo=react)](https://react.dev/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue?style=for-the-badge&logo=typescript)](https://www.typescriptlang.org/)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-3.4-38bdf8?style=for-the-badge&logo=tailwindcss)](https://tailwindcss.com/)
 
-Personal portfolio website for Dikshit Jaswal, a B.Tech Computer Science student and full-stack web developer.
+Personal developer portfolio for **Dikshit Jaswal**, a B.Tech Computer Science student and full-stack software developer. Features interactive project showcases, architectural specializations, technical toolkit, contact pipeline, and an ATS-optimized downloadable resume.
 
-The site showcases selected projects, technical skills, education, contact information, and a downloadable resume.
+🔗 **Live Production Site**: [https://portfolio-website-lake-nine-35.vercel.app/](https://portfolio-website-lake-nine-35.vercel.app/)
 
-## Highlights
+---
 
-- Responsive design for desktop, tablet, and mobile screens
-- Modern dark-glass UI with gradients, grid textures, and smooth interactions
-- Scroll-aware navigation with mobile menu support
-- Project cards with live demos and GitHub repositories
-- Skills grouped by frontend, backend, data, and workflow
-- EmailJS-powered contact form
-- Downloadable resume PDF
-- Smooth scrolling and reduced-motion support
+## 🚀 Featured Projects
 
-## Tech Stack
+| Project | Domain | Architecture Highlights | Links |
+| :--- | :--- | :--- | :--- |
+| **API Sentinel** | DevOps / Telemetry | Synthetic health checks, p95 latencies, Twilio SendGrid/SMS alerts, smart deduplication | [Live Demo](https://api-sentinel-psi.vercel.app/dashboard) · [GitHub](https://github.com/DikshJaswal/api-sentinel) |
+| **RESOLVE** | IT Service Desk SaaS | SLA timers, RBAC authorization, TiDB Cloud serverless MySQL, 1-click recruiter demo | [Live Demo](https://resolve-pink-eight.vercel.app/) · [GitHub](https://github.com/DikshJaswal/RESOLVE) |
+| **CodeFlow Debugger** | Developer Tooling / AST | AST execution engine, call stack frames, variable mutations, algorithmic presets | [Live Demo](https://codeflow-javascript-debugger.vercel.app/) · [GitHub](https://github.com/DikshJaswal/codeflow-javascript-debugger) |
+| **FinPilot** | FinTech SaaS | Monthly budget alerts, Recharts cashflow graphs, CSV statement export, 1-click demo | [Live Demo](https://fin-pilot-zeta-dun.vercel.app/) · [GitHub](https://github.com/DikshJaswal/FinPilot) |
 
-- Next.js 16 and React 19
-- TypeScript
-- Tailwind CSS
-- Framer Motion
-- Lenis smooth scrolling
-- Lucide React icons
-- EmailJS REST API
+---
 
-## Featured Projects
+## 🛠️ Tech Stack
 
-| Project | Description | Links |
-| --- | --- | --- |
-| API Sentinel | API monitoring and security dashboard | [Live Demo](https://api-sentinel-psi.vercel.app) |
-| FinPilot | Full-stack personal finance tracker | [Live Demo](https://fin-pilot-zeta-dun.vercel.app/) · [GitHub](https://github.com/DikshJaswal/FinPilot) |
-| Resolve | Role-based customer support workspace | [Live Demo](https://resolve-pink-eight.vercel.app/) · [GitHub](https://github.com/DikshJaswal/RESOLVE) |
-| CodeFlow Debugger | JavaScript debugging and code analysis tool | [Live Demo](https://codeflow-javascript-debugger.vercel.app) |
+* **Core**: Next.js 16 (App Router, Turbopack), React 19, TypeScript
+* **Styling & Motion**: Tailwind CSS, Framer Motion, Lenis Smooth Scrolling
+* **Icons & Notifications**: Lucide React, React Hot Toast
+* **Email & Contact**: EmailJS REST API with resilient mailto/clipboard fallback
+* **Deployment**: Vercel Serverless Edge
 
-## Run Locally
+---
 
-Requirements: Node.js 18 or newer and npm.
+## 💻 Local Development
 
 ```bash
 git clone https://github.com/DikshJaswal/portfolio-website.git
@@ -49,55 +44,8 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-## EmailJS Configuration
+---
 
-Create a `.env.local` file in the project root:
+## 📄 Resume Configuration
 
-```env
-NEXT_PUBLIC_EMAILJS_SERVICE_ID=your_service_id
-NEXT_PUBLIC_EMAILJS_TEMPLATE_ID=your_template_id
-NEXT_PUBLIC_EMAILJS_PUBLIC_KEY=your_public_key
-```
-
-See [EMAILJS_SETUP.md](./EMAILJS_SETUP.md) for the complete EmailJS setup guide.
-
-## Available Scripts
-
-```bash
-npm run dev      # Start the development server
-npm run build    # Create a production build
-npm run start    # Start the production server
-npm run lint     # Run ESLint
-npx tsc --noEmit # Check TypeScript without emitting files
-```
-
-## Project Structure
-
-```text
-src/
-├── app/
-│   ├── page.tsx              # Main portfolio page
-│   ├── globals.css            # Global styles and responsive design
-│   └── api/                   # Placeholder API route
-├── components/
-│   ├── sections/              # Hero, About, Projects, Skills, Contact
-│   ├── Navigation.tsx
-│   ├── Footer.tsx
-│   └── providers/             # Smooth scrolling provider
-public/
-├── resume.pdf
-├── FinPilot.png
-└── Resolve.png
-```
-
-## Deployment
-
-The project is ready to deploy on [Vercel](https://vercel.com/):
-
-1. Import the repository into Vercel.
-2. Add the three EmailJS environment variables.
-3. Deploy the project.
-
-## License
-
-This portfolio is maintained by Dikshit Jaswal.
+The repository includes a LaTeX source file [`resume.tex`](./resume.tex) formatted strictly for ATS parsing (single-column layout, standard section hierarchies, quantified Google XYZ bullet points, and high keyword density).
